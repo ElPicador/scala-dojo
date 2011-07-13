@@ -11,17 +11,13 @@ import org.scalatest.prop.Checkers._
 import org.scalacheck.Arbitrary.arbitrary
 
 class P02Test extends FlatSpec with ShouldMatchers {
-  
-  it should "validate the property" in {
-    check( Prop.forAll { list: List[Int] => (list.length > 1) ==> (list.reverse.tail.head == P02.penultimate(list)) } )
-  }
-  
-  it should "get the penultieme element" in {
-    val list = List(1, 2, 3, 4, 5)
-    P02.penultimate(list) should equal (4)
     
-    val list2 = List(1, 2)
-    P02.penultimate(list2) should equal (1)
+  it should "return 3 if the given list is (3,2)" in {
+    val sut = new P02
+    sut.penultimate(List(3,2)) should equal (3)
   }
-  
+  it should "return 3 if the given list is (1,2,3,2)" in {
+     val sut = new P02
+     sut.penultimate(List(1,2,3,2)) should equal (3)
+   }
 }
