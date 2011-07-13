@@ -9,9 +9,9 @@ object P01 {
   //   }
   // }
   // 
-  def last[E](ls: List[E]): E = ls match {
-    case Nil | List() => throw new NoSuchElementException
-    case head :: Nil => head
+  def last[E](ls: List[E]): Option[E] = ls match {
+    case List() => None
+    case head :: List() => Some(head)
     case _ :: tail => P01.last(tail)
   }
 }
