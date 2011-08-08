@@ -11,13 +11,26 @@ import org.scalatest.prop.Checkers._
 import org.scalacheck.Arbitrary.arbitrary
 
 class P02Test extends FlatSpec with ShouldMatchers {
-    
-  it should "return 3 if the given list is (3,2)" in {
-    val sut = new P02
-    sut.penultimate(List(3,2)) should equal (3)
+  
+  it should "return none when giving empty list" in {
+    val list = List()
+    P02.penultimate(list) should be (None)
   }
-  it should "return 3 if the given list is (1,2,3,2)" in {
-     val sut = new P02
-     sut.penultimate(List(1,2,3,2)) should equal (3)
-   }
+  
+  it should "return the only element of a list with one element" in {
+    val list = List("1")
+    P02.penultimate(list) should be (Some("1"))
+  }
+  
+  it should "return the penultimate element of a list" in {
+    val list = List("1","2")
+    P02.penultimate(list) should be (Some("1"))
+  }
+  
+  it should "return the penultimate element of a list with 3 elements" in {
+    val list = List("1","2", "3")
+    P02.penultimate(list) should be (Some("2"))
+  }
+  
+    
 }

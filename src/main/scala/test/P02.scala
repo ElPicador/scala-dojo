@@ -1,10 +1,12 @@
 package test
 
-class P02 {
-  
-  //Find the last but one element of a list.
-  def penultimate[E](ls: List[E]): E = ls match {
-    case x::_::Nil => x
-    case _::xs => penultimate(xs)
+object P02 {
+
+  def penultimate[E](list: List[E]): Option[E] = list match {
+    case List() => None
+    case head :: List() => Some(head)
+    case head :: _ :: List() => Some(head)
+    case _ :: tail => penultimate(tail)
   }
+ 
 }

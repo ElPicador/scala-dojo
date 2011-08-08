@@ -1,11 +1,14 @@
 package test
 
 object P03 {
-  
-  //Find the Kth element of a list.
-  //By convention, the first element in the list is element 0.
-  def nth[E](n: Int, ls: List[E]): E = (n, ls) match {
-    case (0, x::xs) => x
-    case (n, x::xs) => P03.nth(n-1, xs)
+  def nth [E](n: Int, list: List[E]): E = {
+    list.each.with_index do |e, i|
+      return e if i == n
+    end
   }
+  
+  def nth2[E](n: Int, list: List[E]): E = {
+    list.zipWithIndex.find(_._2 == n).map(_._1)
+  }
+
 }
