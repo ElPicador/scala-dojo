@@ -29,7 +29,7 @@ class P03Test extends FlatSpec with ShouldMatchers {
   
   it should "return second element given a list with 3 element for nth2" in {
     val list = List(1, 2, 3)
-    P03.nth2(2,list) should be(3)    
+    P03.nth2(2,list) should be(Some(3))    
   }
  
 }
